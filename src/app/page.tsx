@@ -60,7 +60,7 @@ export default function Home() {
       <Header />
       <div className="flex items-center justify-between px-8">
         <SearchBar />
-        <Filter />
+        <Filter setCountries={setCountryList} allCountries={allCountriesList} />
       </div>
       <div className="grid grid-cols-1 gap-8 px-8 pb-8 w-full 2xl:grid-cols-5 xl:gap-16 lg:grid-cols-4 md:grid-cols-3 min-[500px]:grid-cols-2">
         {

@@ -13,9 +13,11 @@ export const countryFields = defineFields(["name", "capital", "population", "reg
 
 export default function Home() {
   const [countryList, setCountryList] = useState<CountryPicker<typeof countryFields>[] | null>([]);
+  const [allCountriesList, setAllCountriesList] = useState<CountryPicker<typeof countryFields>[] | null>([]);
 
   const getRegionalCountries = (region: Region) => {
-
+    const regionalCountries = allCountriesList?.filter((country) => country.region === region) || null;
+    setCountryList(regionalCountries);
   }
 
   useEffect(() => {
@@ -24,9 +26,10 @@ export default function Home() {
         fields: ["name", "capital", "population", "region", "flags"]
       });
 
-      const countriesList = countries?.filter((country) => country.region === "Africa");
+      const countriesList = countries;
 
-      if (countriesList !== undefined) {
+      if (countriesList !== null) {
+        setAllCountriesList(countriesList);
         setCountryList(countriesList);
       }
 
@@ -53,18 +56,20 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-dvh w-dvw bg-slate-200/50 flex flex-col gap-8">
+    <div className="min-h-screen w-screen bg-slate-200/50 flex flex-col gap-8">
       <Header />
       <div className="flex items-center justify-between px-8">
         <SearchBar />
-        <Filter />
+        <Filter setCountries={setCountryList} allCountries={allCountriesList} />
       </div>
-      <div className="grid grid-cols-4 gap-16 w-dvw h-dvh px-8">
+      <div className="grid grid-cols-1 gap-8 px-8 pb-8 w-full 2xl:grid-cols-5 xl:gap-16 lg:grid-cols-4 md:grid-cols-3 min-[500px]:grid-cols-2">
         {
           countryList?.map((country) => (
-            <div className="flex flex-col items-center justify-center py-8 bg-slate-50 rounded-2xl border-slate-200/50 shadow-md" key={country.name.common}>
-              <Image src={country.flags.png} alt={country.name.common} width={200} height={150} className="rounded-2xl"/>
-              <div className="flex flex-col gap-4 items-center justify-center py-4">
+            <div className="flex flex-col bg-slate-50 rounded-2xl border-slate-200/50 shadow-md max-w-80 max-[500px]:w-full" key={country.name.common}>
+              <div className="w-full h-36 relative">
+                <Image src={country.flags.png} alt={country.name.common} fill={true} className="rounded-t-2xl" />
+              </div>
+              <div className="flex flex-col gap-4 items-start justify-center p-4">
                 <p className="text-xl font-bold">{country.name.common}</p>
                 <div className="flex flex-col items-start justify-center gap-2">
                   <p className="text-lg font-semibold">Population: <span className="font-normal">{country.population}</span></p>

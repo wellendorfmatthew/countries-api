@@ -4,10 +4,9 @@ import Image from "next/image";
 import Header from "./components/header/header";
 import SearchBar from "./components/searchbar/searchbar";
 import Filter from "./components/filter/filter";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { defineFields, getCountries, getCountriesByRegion } from "@yusifaliyevpro/countries";
-import { CountryPicker, Region, Country } from "@yusifaliyevpro/countries/types";
+import { CountryPicker, Region } from "@yusifaliyevpro/countries/types";
 
 export const countryFields = defineFields(["name", "capital", "population", "region", "flags"]);
 
@@ -56,10 +55,10 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="min-h-screen w-screen bg-slate-200/50 flex flex-col gap-8">
+    <div className="min-h-screen w-full bg-slate-200/50 flex flex-col gap-8">
       <Header />
       <div className="flex items-center justify-between px-8">
-        <SearchBar />
+        <SearchBar setCountries={setCountryList} allCountries={allCountriesList} />
         <Filter setCountries={setCountryList} allCountries={allCountriesList} />
       </div>
       <div className="grid grid-cols-1 gap-8 px-8 pb-8 w-full 2xl:grid-cols-5 xl:gap-16 lg:grid-cols-4 md:grid-cols-3 min-[500px]:grid-cols-2">

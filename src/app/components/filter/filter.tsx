@@ -17,38 +17,38 @@ export default function Filter({ setCountries, allCountries }: FilterProps) {
     }
 
     return (
-        <div className="flex items-center justify-between p-4 w-52 border-border shadow-md rounded-2xl bg-slate-50 relative" onClick={() => setIsClicked(!isClicked)}>
+        <div className="flex items-center justify-between p-4 w-52 border-border shadow-md rounded-2xl bg-header relative" onClick={() => setIsClicked(!isClicked)}>
             <p className="font-medium">Filter by Region</p>
             <BiSolidChevronDown size={20} className={`cursor-pointer transition duration-200 ${isClicked ? "-rotate-180" : "rotate-0"}`} />
             {isClicked && (
-                <div className="absolute top-full right-0 mt-2 bg-slate-50 w-full z-30 border-slate-200/50 shadow-md rounded-2xl">
+                <div className="absolute top-full right-0 mt-2 bg-header w-full z-30 border-border shadow-md rounded-2xl">
                     <div className="grid grid-cols-1 w-full h-full">
                         <div 
-                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-slate-200 duration-200"
+                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-background duration-200"
                             onClick={() => getRegionalCountries("Africa")}
                         >
                             <p className="font-medium" >Africa</p>
                         </div>
                         <div 
-                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-slate-200 duration-200"
+                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-background duration-200"
                             onClick={() => getRegionalCountries("Americas")}
                         >
                             <p className="font-medium" >Americas</p>
                         </div>
                         <div 
-                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-slate-200 duration-200"
+                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-background duration-200"
                             onClick={() => getRegionalCountries("Asia")}
                         >
                             <p className="font-medium" >Asia</p>
                         </div>
                         <div 
-                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-slate-200 duration-200"
+                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-background duration-200"
                             onClick={() => getRegionalCountries("Europe")}
                         >
                             <p className="font-medium" >Europe</p>
                         </div>
                         <div 
-                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-slate-200 duration-200"
+                            className="flex items-center justify-start p-4 cursor-pointer transition hover:bg-background duration-200"
                             onClick={() => getRegionalCountries("Oceania")}
                         >
                             <p className="font-medium" >Oceania</p>

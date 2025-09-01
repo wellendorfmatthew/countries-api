@@ -1,23 +1,26 @@
 @import "tailwindcss";
 
 :root {
-  --background: oklch(98.4% 0.003 247.858);
+  --background: oklch(92.9% 0.013 255.508);
   --foreground: oklch(12.9% 0.042 264.695);
   --border: rgba(226, 232, 240, 0.5);
+  --header: oklch(98.4% 0.003 247.858);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
+  --color-header: var(--header);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 .dark {
-  --background: oklch(12.9% 0.042 264.695);
+  --background: oklch(27.8% 0.033 256.848);
   --foreground: oklch(98.4% 0.003 247.858);
-  --border: oklch(98.4% 0.003 247.858);
+  --border: oklch(14.077% 0.0044 285.776 / 0.5);
+  --header: oklch(37.3% 0.034 259.733);
 }
 
 body {

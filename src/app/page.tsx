@@ -11,13 +11,8 @@ import { CountryPicker, Region } from "@yusifaliyevpro/countries/types";
 export const countryFields = defineFields(["name", "capital", "population", "region", "flags"]);
 
 export default function Home() {
-  const [countryList, setCountryList] = useState<CountryPicker<typeof countryFields>[] | null>([]);
-  const [allCountriesList, setAllCountriesList] = useState<CountryPicker<typeof countryFields>[] | null>([]);
-
-  const getRegionalCountries = (region: Region) => {
-    const regionalCountries = allCountriesList?.filter((country) => country.region === region) || null;
-    setCountryList(regionalCountries);
-  }
+  const [countryList, setCountryList] = useState<CountryPicker<typeof countryFields>[] | null>(null);
+  const [allCountriesList, setAllCountriesList] = useState<CountryPicker<typeof countryFields>[] | null>(null);
 
   useEffect(() => {
     const fetchAllCountries = async() => {
@@ -39,19 +34,9 @@ export default function Home() {
       return countries;
     }
 
-    const fetchAmericanCountries = async() => {
-      const americanCountries = await getCountriesByRegion({
-        region: "Americas",
-      });
-
-      return americanCountries;
-    }
-
     const countries = fetchAllCountries();
-    const americanCountries = fetchAmericanCountries();
 
     console.log(countries);
-    console.log(americanCountries);
   }, []);
 
   return (
